@@ -8,25 +8,31 @@ This repo is the docker setup guide of [OrangeJuice-Stats](https://github.com/Ha
 
 
 ## 0. install Docker Compose
-``curl -fsSL get.docker.com -o get-docker.sh``
-``sudo systemctl enable docker --now``
+```
+curl -fsSL get.docker.com -o get-docker.sh
+
+sudo systemctl enable docker --now
+```
 
 ## 1. clone this repo
-``git clone git@github.com:Hanekihyouka/OrangeJuice-Stats-Docker.git``
-``cd OrangeJuice-Stats-Docker``
+```
+git clone git@github.com:Hanekihyouka/OrangeJuice-Stats-Docker.git
 
-## 2. download latest snapshot to www/localhost
+cd OrangeJuice-Stats-Docker
+```
+
+## 2. setup your steam-api-key
+Get your api key on [Steam](https://steamcommunity.com/dev).   
+```echo "<?php \$_config['apikey'] = 'YOUR_API_KEY_HERE'; ?>" > www/localhost/config.php```
+
+## 3. download latest snapshot to www/localhost
 ```
 wget https://github.com/Hanekihyouka/OrangeJuice-Stats/archive/refs/heads/master.zip \
     && ln -s www/localhost OrangeJuice-Stats-master \
-    && unzip master.zip \
+    && unzip -n master.zip \
     && rm OrangeJuice-Stats-master \
     && rm master.zip
 ```
-
-## 3. setup your steam-api-key
-Get your api key on [Steam](https://steamcommunity.com/dev).   
-``echo "<?php \$_config['apikey'] = 'YOUR_API_KEY_HERE'; ?>" > www/localhost/config.php``
 
 ## 4. Running the Containers
 ```
